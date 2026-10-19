@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d0f17" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>YUJIMIN iPhone</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="stage">
+    <section class="phone-shell">
+      <i class="side-btn left mute"></i>
+      <i class="side-btn left volup"></i>
+      <i class="side-btn left voldown"></i>
+      <i class="side-btn right power"></i>
+
+      <div class="phone" id="phone">
+        <div class="screen-glare"></div>
+
+        <button class="dynamic-island" id="dynamicIsland" aria-label="Dynamic Island">
+          <span class="island-camera"></span>
+          <span class="island-dot"></span>
+          <span class="island-text" id="islandText">YUJIMIN</span>
+        </button>
+
+        <div class="statusbar" id="statusbar">
+          <span id="statusTime">9:41</span>
+          <span class="status-icons">
+            <span class="signal">▮▮▮▮</span>
+            <span>5G</span>
+            <span class="battery-mini"><b id="miniBattery">87</b></span>
+          </span>
+        </div>
+
+        <!-- LOCK SCREEN -->
+        <section id="lockScreen" class="screen active lock-screen">
+          <div class="wallpaper-bg"></div><div class="wallpaper-noise"></div>
+          <div class="lock-content">
+            <div class="lock-glyph">⌁</div>
+            <div id="lockDate" class="lock-date"></div>
+            <div id="lockTime" class="lock-time">9:41</div>
+            <div class="lock-owner">YUJIMIN PHONE</div>
+          </div>
+
+          <div class="lock-focus">집중 모드 꺼짐</div>
+          <div class="notification-stack">
+            <button class="notification" data-open-app="kakao">
+              <span class="notif-icon kakao-mini">T</span>
+              <span class="notif-body">
+                <b>카카오톡</b>
+                <span>민정 · 끝났어?</span>
+              </span>
+              <small>지금</small>
+            </button>
+            <button class="notification" data-open-app="messages">
+              <span class="notif-icon message-mini">✉</span>
+              <span class="notif-body">
+                <b>메시지</b>
+                <span>매니저 · 내일 일정 확인 부탁드립니다.</span>
+              </span>
+              <small>3분 전</small>
+            </button>
+          </div>
+
+          <div class="lock-actions">
+            <button class="lock-action" id="flashlightBtn">◼</button>
+            <div class="unlock-hint"><span class="chevron">⌃</span>위로 쓸어올려서 열기</div>
+            <button class="lock-action" id="cameraQuick">◉</button>
+          </div>
+        </section>
+
+        <!-- FACE ID -->
+        <section id="faceScreen" class="screen face-screen">
+          <div class="face-bg"></div>
+          <div class="face-wrap">
+            <div class="face-icon" id="faceIcon">
+              <span class="face-eye left"></span>
+              <span class="face-eye right"></span>
+              <span class="face-mouth"></span>
+            </div>
+            <div class="face-title" id="faceTitle">Face ID</div>
+            <div class="face-sub" id="faceSub">Face ID로 인증 중…</div>
+          </div>
+        </section>
+
+        <!-- PASSCODE -->
+        <section id="passcodeScreen" class="screen passcode-screen">
+          <div class="passcode-bg"></div>
+          <div class="passcode-wrap">
+            <div class="passcode-lock">⌁</div>
+            <div class="passcode-title">암호 입력</div>
+            <div class="passcode-dots" id="passcodeDots">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <div class="passcode-keypad">
+              <button data-key="1">1<small></small></button>
+              <button data-key="2">2<small>ABC</small></button>
+              <button data-key="3">3<small>DEF</small></button>
+              <button data-key="4">4<small>GHI</small></button>
+              <button data-key="5">5<small>JKL</small></button>
+              <button data-key="6">6<small>MNO</small></button>
+              <button data-key="7">7<small>PQRS</small></button>
+              <button data-key="8">8<small>TUV</small></button>
+              <button data-key="9">9<small>WXYZ</small></button>
+              <span></span>
+              <button data-key="0">0<small></small></button>
+              <button id="passcodeDelete" class="delete-key">⌫</button>
+            </div>
+
+            <div class="passcode-bottom">
+              <button id="passcodeEmergency">긴급 상황</button>
+              <button id="passcodeCancel">취소</button>
+            </div>
+            <div id="passcodeMessage" class="passcode-message"></div>
+          </div>
+        </section>
+
+        <!-- HOME -->
+        <section id="homeScreen" class="screen home-screen">
+          <div class="home-bg"></div><div class="wallpaper-noise"></div>
+          <div class="home-search" id="homeSearchBtn">⌕ 검색</div>
+
+          <div class="widgets">
+            <button class="widget widget-clock" data-app="clock">
+              <span class="widget-eyebrow">서울</span>
+              <span id="homeClock" class="widget-time">9:41</span>
+              <span class="widget-small">YUJIMIN</span>
+            </button>
+            <button class="widget widget-battery" data-app="settings">
+              <span class="widget-eyebrow">배터리</span>
+              <span class="battery-ring"><span id="batteryPercent">87%</span></span>
+            </button>
+          </div>
+
+          <div class="apps-grid">
+            <button class="app" data-app="kakao"><span class="app-icon kakao">TALK</span><span>카카오톡</span></button>
+            <button class="app" data-app="messages"><span class="app-icon messages"><span class="bubble-glyph">●</span></span><span>메시지</span></button>
+            <button class="app" data-app="phone"><span class="app-icon phone-icon"><span class="phone-glyph">⌕</span></span><span>전화</span></button>
+            <button class="app" data-app="photos"><span class="app-icon photos">✿</span><span>사진</span></button>
+
+            <button class="app" data-app="camera"><span class="app-icon camera"><span class="camera-glyph">●</span></span><span>카메라</span></button>
+            <button class="app" data-app="safari"><span class="app-icon safari">⌁</span><span>Safari</span></button>
+            <button class="app" data-app="notes"><span class="app-icon notes">▤</span><span>메모</span></button>
+            <button class="app" data-app="music"><span class="app-icon music">♫</span><span>음악</span></button>
+
+            <button class="app" data-app="calendar"><span class="app-icon calendar"><small>월</small><b>19</b></span><span>캘린더</span></button>
+            <button class="app" data-app="clock"><span class="app-icon clock">◷</span><span>시계</span></button>
+            <button class="app" data-app="weather"><span class="app-icon weather">☀</span><span>날씨</span></button>
+            <button class="app" data-app="settings"><span class="app-icon settings"><span class="gear-glyph">✣</span></span><span>설정</span></button>
+          </div>
+
+          <div class="home-page-indicator"><span class="active"></span><span></span></div>
+          <div class="spotlight-pill">⌕</div>
+
+          <div class="dock">
+            <button class="app dock-app" data-app="phone"><span class="app-icon phone-icon"><span class="phone-glyph">⌕</span></span></button>
+            <button class="app dock-app" data-app="messages"><span class="app-icon messages"><span class="bubble-glyph">●</span></span></button>
+            <button class="app dock-app" data-app="music"><span class="app-icon music">♫</span></button>
+            <button class="app dock-app" data-app="safari"><span class="app-icon safari">⌁</span></button>
+          </div>
+        </section>
+
+        <!-- APP -->
+        <section id="appScreen" class="screen app-screen">
+          <div id="appView" class="app-view"></div>
+        </section>
+
+        <!-- CONTROL CENTER -->
+        <section id="controlCenter" class="overlay control-center">
+          <div class="cc-head">
+            <span>제어센터</span>
+            <span id="ccBattery">87%</span>
+          </div>
+
+          <div class="cc-page-rail" aria-hidden="true">
+            <span class="rail-dot active">●</span>
+            <span class="rail-dot">♫</span>
+            <span class="rail-dot">⌂</span>
+            <span class="rail-dot">⌁</span>
+          </div>
+          <div class="cc-grid">
+            <div class="cc-box connectivity">
+              <button class="cc-circle active" data-toggle="airplane">✈</button>
+              <button class="cc-circle active" data-toggle="wifi">⌁</button>
+              <button class="cc-circle active" data-toggle="bluetooth">ᛒ</button>
+              <button class="cc-circle" data-toggle="cellular">◉</button>
+            </div>
+
+            <button class="cc-box nowplaying" id="ccMusic">
+              <small>재생 중</small>
+              <b>My Playlist</b>
+              <span>My Track</span>
+              <div class="cc-controls">◀︎　▶︎　▶</div>
+            </button>
+
+            <div class="cc-box sliderbox">
+              <span>☀</span>
+              <input id="brightness" type="range" min="35" max="110" value="94">
+            </div>
+
+            <div class="cc-box sliderbox">
+              <span>🔊</span>
+              <input id="volume" type="range" min="0" max="100" value="58">
+            </div>
+
+            <button class="cc-tile" data-toggle="focus">☾<small>집중 모드</small></button>
+            <button class="cc-tile" data-toggle="mirror">▣<small>화면 미러링</small></button>
+            <button class="cc-tile" id="ccCamera">◉<small>카메라</small></button>
+            <button class="cc-tile" id="ccCalc">⌗<small>계산기</small></button>
+          </div>
+        </section>
+
+        <!-- NOTIFICATION CENTER -->
+        <section id="notificationCenter" class="overlay notification-center">
+          <div id="ncTime" class="nc-time">9:41</div>
+          <div id="ncDate" class="nc-date"></div>
+
+          <div class="notification-stack big">
+            <button class="notification" data-open-app="kakao">
+              <span class="notif-icon kakao-mini">T</span>
+              <span class="notif-body"><b>카카오톡</b><span>민정 · 끝났어?</span></span>
+              <small>지금</small>
+            </button>
+            <button class="notification" data-open-app="messages">
+              <span class="notif-icon message-mini">✉</span>
+              <span class="notif-body"><b>메시지</b><span>매니저 · 내일 일정 확인 부탁드립니다.</span></span>
+              <small>3분 전</small>
+            </button>
+            <button class="notification" data-open-app="music">
+              <span class="notif-icon music-mini">♫</span>
+              <span class="notif-body"><b>음악</b><span>재생목록이 준비되었습니다.</span></span>
+              <small>8분 전</small>
+            </button>
+          </div>
+        </section>
+
+        <!-- SEARCH -->
+        <section id="spotlight" class="overlay spotlight">
+          <div class="spotlight-search">
+            <span>⌕</span>
+            <input id="spotlightInput" placeholder="검색" autocomplete="off" />
+            <button id="spotlightClose">취소</button>
+          </div>
+          <div id="spotlightResults" class="spotlight-results"></div>
+        </section>
+
+        <!-- APP SWITCHER -->
+        <section id="appSwitcher" class="overlay app-switcher">
+          <div id="switcherCards" class="switcher-cards"></div>
+        </section>
+
+        <!-- TOAST -->
+        <div id="toast" class="toast"></div>
+
+        <button id="homeIndicator" class="home-indicator" aria-label="홈"></button>
+      </div>
+    </section>
+
+    </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

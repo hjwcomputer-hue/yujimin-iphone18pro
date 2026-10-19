@@ -1,0 +1,9 @@
+{
+  "name": "YUJIMIN iPhone",
+  "short_name": "YJ Phone",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d0f17",
+  "theme_color": "#0d0f17",
+  "description": "YUJIMIN iPhone interface"
+}
